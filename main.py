@@ -42,9 +42,14 @@ def header(title: str, width: int = 72) -> str:
 def prompt_float(msg: str) -> float:
     while True:
         try:
-            return float(input(msg).strip())
+            val = float(input(msg).strip())
         except ValueError:
             print("  [!] Please enter a valid number.")
+            continue
+        if val <= 0:
+            print("  [!] Value must be greater than 0.")
+            continue
+        return val
 
 
 def prompt_int(msg: str, min_val: int = 1) -> int:
